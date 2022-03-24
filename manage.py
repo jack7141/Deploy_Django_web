@@ -7,7 +7,11 @@ import dotenv
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    
+    # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    # 배포를 위해서 아래와 같이 수정
+
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
