@@ -28,4 +28,4 @@ urlpatterns = [
 # 개발모드일 경우에만 우리가 지정한 경로로 들어가서 media를 읽어온다.
 # 배포일 경우엔 이 방법이 효울적이지 못함
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

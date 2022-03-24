@@ -15,11 +15,11 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
-RUN echo "SECRETE_KEY=django-insecure-xyfhjgjryxmkbdy(%htaqv$&njww5f^g7df5p5--i1eugaqo6v" > .env
+# RUN echo "SECRETE_KEY=django-insecure-xyfhjgjryxmkbdy(%htaqv$&njww5f^g7df5p5--i1eugaqo6v" > .env
 
 RUN python manage.py migrate
 
-RUN echo yes | python manage.py collectstatic
+RUN python manage.py collectstatic
 ######################################################################
 # 포트 노출
 ######################################################################
