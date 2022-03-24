@@ -19,7 +19,7 @@ RUN echo "SECRETE_KEY=django-insecure-xyfhjgjryxmkbdy(%htaqv$&njww5f^g7df5p5--i1
 
 RUN python manage.py migrate
 
-RUN python manage.py collectstatic
+RUN python manage.py collectstatic --no-input
 ######################################################################
 # 포트 노출
 ######################################################################
