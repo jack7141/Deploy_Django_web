@@ -6,7 +6,8 @@
 from pathlib import Path
 import os
 from .base import *
-
+import dotenv
+dotenv.load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 

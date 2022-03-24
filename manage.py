@@ -3,11 +3,11 @@
 import os
 import sys
 
-import dotenv
-
+# import dotenv
+# dotenv.load_dotenv()
 def main():
     """Run administrative tasks."""
-    
+
     # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     # 배포를 위해서 아래와 같이 수정
 
@@ -24,5 +24,5 @@ def main():
 
 
 if __name__ == '__main__':
-    dotenv.read_dotenv()
+    # dotenv.load_dotenv()
     main()
