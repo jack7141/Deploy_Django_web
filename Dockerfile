@@ -5,7 +5,7 @@ FROM python:3.10.0
 ######################################################################
 # DIR 변경 => hoome -> clone -> home/DjangoBlog 이동
 ######################################################################
-RUN echo "docker compose add"
+RUN echo "docker compose add && 카카오접속 수정"
 
 WORKDIR /home/
 RUN git clone https://github.com/jack7141/Deploy_Django_web.git

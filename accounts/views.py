@@ -219,7 +219,7 @@ def kakao_login(request):
     # 로컬
     # redirect_uri = "http://127.0.0.1:8000/accounts/login/kakao/callback"
     # 배포
-    redirect_uri = "http://18.208.137.166/accounts/login/kakao/callback"
+    REDIRECT_URI = "http://18.208.137.166/accounts/login/kakao/callback"
     
     # 복사해올때 $ 없애는거 주의!
     return redirect(f'https://kauth.kakao.com/oauth/authorize?client_id={REST_API_KEY}&redirect_uri={REDIRECT_URI}&response_type=code')
