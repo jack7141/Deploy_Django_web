@@ -7,8 +7,8 @@ FROM python:3.8.11
 # DIR 변경 => hoome -> clone -> home/DjangoBlog 이동
 ######################################################################
 WORKDIR /home/
-RUN git clone https://github.com/jack7141/cafeproject
-WORKDIR /home/cafeproject/
+RUN git clone https://github.com/jack7141/Deploy_Django_web
+WORKDIR /home/Deploy_Django_web/
 ######################################################################
 # 라이브러리 설치 및 static 파일 처리를 위해서 collectstatic처리
 ######################################################################
