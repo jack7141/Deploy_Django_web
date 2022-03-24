@@ -157,7 +157,7 @@ def google_callback(request):
     try:
         code = request.GET.get("code")
         client_id = os.environ.get("GOOGLE_KEY")
-        client_secret = os.environ.get("GOOGLE_PASSWORD")
+        client_secret = read_secrete("GOOGLE_PASSWORD")
         redirect_uri = "http://127.0.0.1:8000/accounts/login/google/callback"
         state = "random_string"
         
@@ -271,3 +271,11 @@ def kakao_callback(request):
     except KakaoException as e:
         messages.error(request, e)
         return redirect("accounts:login")
+
+
+def read_secrete(secret_name):
+    file = open('/run/secrets/'+secret_name)
+    secret = file.read()
+    secret = secret.rstrip().lstrip()
+    file.close()
+    return secret

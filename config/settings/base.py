@@ -10,7 +10,12 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
+def read_secrete(secret_name):
+    file = open('/run/secrets/'+secret_name)
+    secret = file.read()
+    secret = secret.rstrip().lstrip()
+    file.close()
+    return secret
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -116,7 +121,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.naver.com"
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('NAVER_USERNAME')
-EMAIL_HOST_PASSWORD = os.environ.get("NAVER_PASSWORD")
+EMAIL_HOST_PASSWORD = read_secrete("NAVER_PASSWORD")
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 

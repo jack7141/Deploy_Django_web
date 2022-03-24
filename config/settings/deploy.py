@@ -4,14 +4,19 @@
 import os
 from .base import *
 
-
+def read_secrete(secret_name):
+    file = open('/run/secrets/'+secret_name)
+    secret = file.read()
+    secret = secret.rstrip().lstrip()
+    file.close()
+    return secret
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # 암호화 완료
 # SECRET_KEY =  os.environ.get('SECRETE_KEY')
-SECRET_KEY = env('SECRETE_KEY')
+SECRET_KEY = read_secrete('SECRETE_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -25,7 +30,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django',
         'USER': 'django',
-        'PASSWORD': 'password1234',
+        'PASSWORD': read_secrete('MYSQL_PASSWORD'),
         # Docker Container Name
         'HOST': 'mariadb',
         'PORT': '3306',
