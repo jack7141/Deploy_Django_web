@@ -15,7 +15,7 @@ services:
       - 80:80
   djagno_container_gunicorn:
   # Django 서비스 설정
-    image: 	deploy:4
+    image: 	deploy:5
   # 연동 네트워크 이름 설정
     networks:
       - network
@@ -29,9 +29,9 @@ services:
       GOOGLE_KEY: 365175409424-lshmig4ibu3kfns892ihii77qb1lka7e.apps.googleusercontent.com
     secrets:
       - MYSQL_PASSWORD
-      - MYSQL_ROOT_PASSWORD
       - GOOGLE_PASSWORD
       - NAVER_PASSWORD
+      - SECRETE_KEY
 
 
   # setting내 내가 설정한 HOST이름
@@ -41,14 +41,17 @@ services:
       - network
     volumes:
       - maria-database:/var/lib/mysql
+
+    secrets:
+      - MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD
+
     # 환경변수 추가
     environment:
       MYSQL_DATABASE: django
       MYSQL_USER: django
       MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
-      GOOGLE_PASSWORD_FILE: /run/secrets/GOOGLE_PASSWORD
-      NAVER_PASSWORD_FILE: /run/secrets/NAVER_PASSWORD
 
 # 네트워크 설정
 networks:
@@ -60,7 +63,7 @@ volumes:
   maria-database:
 
 secrets:
-  SECRET_KEY:
+  SECRETE_KEY:
     external: true  
   MYSQL_PASSWORD:
     external: true  

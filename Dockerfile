@@ -5,7 +5,7 @@ FROM python:3.10.0
 ######################################################################
 # DIR 변경 => hoome -> clone -> home/DjangoBlog 이동
 ######################################################################
-RUN echo "Docker Setting variable change"
+RUN echo "docker compose add"
 
 WORKDIR /home/
 RUN git clone https://github.com/jack7141/Deploy_Django_web.git
