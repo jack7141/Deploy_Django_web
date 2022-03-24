@@ -2,11 +2,14 @@
 
 from pathlib import Path
 import os
-
-import dotenv
-dotenv.load_dotenv()
+import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,8 +58,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -114,7 +115,7 @@ AUTH_USER_MODEL = "accounts.User"
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.naver.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get("NAVER_USERNAME")
+EMAIL_HOST_USER = os.environ.get('NAVER_USERNAME')
 EMAIL_HOST_PASSWORD = os.environ.get("NAVER_PASSWORD")
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

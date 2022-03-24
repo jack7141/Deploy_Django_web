@@ -5,7 +5,7 @@ FROM python:3.10.0
 ######################################################################
 # DIR 변경 => hoome -> clone -> home/DjangoBlog 이동
 ######################################################################
-RUN echo "Docker Start"
+RUN echo "Docker Setting Change  && upgrade pip"
 
 WORKDIR /home/
 RUN git clone https://github.com/jack7141/Deploy_Django_web.git
@@ -17,14 +17,14 @@ RUN pip install -r requirements.txt
 
 RUN pip install gunicorn
 
+RUN pip install django-environ 
+
 ######################################################################
 # DB 설치
 ######################################################################
 RUN pip install mysqlclient
 
 RUN echo "SECRETE_KEY=django-insecure-xyfhjgjryxmkbdy(%htaqv$&njww5f^g7df5p5--i1eugaqo6v" > .env
-
-RUN python manage.py migrate
 
 RUN python manage.py collectstatic --no-input
 ######################################################################
